@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 
-public struct Spawner : IComponentData
+public struct EntitySpawner : IComponentData
 {
     public Entity SpawnPrefab;
     public float3 SpawnPosition;
@@ -10,21 +10,20 @@ public struct Spawner : IComponentData
     public float SpawnSpanTime;
 }
 
-public class SpawnerAuthoring : MonoBehaviour
+public class EntitySpawnerAuthoring : MonoBehaviour
 {
     [SerializeField] GameObject spawnPrefab;
-    [SerializeField] Transform spawnerTransform;
     [SerializeField] float spawnSpanTime;
 
-    class SpawnerBaker : Baker<SpawnerAuthoring>
+    class EntitySpawnerBaker : Baker<EntitySpawnerAuthoring>
     {
-        public override void Bake(SpawnerAuthoring authoring)
+        public override void Bake(EntitySpawnerAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.None);
-            AddComponent(entity, new Spawner
+            AddComponent(entity, new EntitySpawner
             {
                 SpawnPrefab = GetEntity(authoring.spawnPrefab, TransformUsageFlags.Dynamic),
-                SpawnPosition = authoring.spawnerTransform.position,
+                SpawnPosition = authoring.transform.position,
                 NextSpawnTime = 0.0f,
                 SpawnSpanTime = authoring.spawnSpanTime,
             });

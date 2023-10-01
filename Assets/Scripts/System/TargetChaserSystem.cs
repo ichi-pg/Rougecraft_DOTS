@@ -5,7 +5,7 @@ using Unity.Burst;
 using Unity.Mathematics;
 
 [BurstCompile]
-public partial struct ChaserSystem : ISystem
+public partial struct TargetChaserSystem : ISystem
 {
     public void OnCreate(ref SystemState state)
     {
@@ -18,7 +18,7 @@ public partial struct ChaserSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        new ChaserJob
+        new TargetChaserJob
         {
             DeltaTime = Time.deltaTime,
 
@@ -27,11 +27,11 @@ public partial struct ChaserSystem : ISystem
 }
 
 [BurstCompile]
-public partial struct ChaserJob : IJobEntity
+public partial struct TargetChaserJob : IJobEntity
 {
     public float DeltaTime;
 
-    void Execute(in Chaser chaser, ref LocalTransform transform)
+    void Execute(in TargetChaser chaser, ref LocalTransform transform)
     {
         var direction = math.normalize(chaser.TargetPosition - transform.Position);
         transform.Position += direction * chaser.MoveSpeed * DeltaTime;

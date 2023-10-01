@@ -3,7 +3,7 @@ using Unity.Burst;
 using Unity.Mathematics;
 
 [BurstCompile]
-public partial struct TracerSystem : ISystem
+public partial struct PlayerChaserSystem : ISystem
 {
     public void OnCreate(ref SystemState state)
     {
@@ -16,21 +16,24 @@ public partial struct TracerSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        var tracer = SystemAPI.GetSingleton<Tracer>();
-        new TracerJob
+        // foreach (var (tag, transform) in SystemAPI.Query<RefRO<PlayerTag>, RefRO<LocalTransform>>())
+        // {
+        new PlayerChaserJob
         {
-            TargetPosition = tracer.TargetPosition,
+            // TargetPosition = transform.Position,
 
         }.ScheduleParallel();
+        // }
+        //TODO PlayerのSingletonのTransformを取得
     }
 }
 
 [BurstCompile]
-public partial struct TracerJob : IJobEntity
+public partial struct PlayerChaserJob : IJobEntity
 {
     public float3 TargetPosition;
 
-    void Execute(ref Chaser chaser)
+    void Execute(in EnemyTag tag, ref TargetChaser chaser)
     {
         chaser.TargetPosition = TargetPosition;
     }
