@@ -1,6 +1,7 @@
 using Unity.Entities;
 using Unity.Burst;
 using Unity.Mathematics;
+using Unity.Transforms;
 
 [BurstCompile]
 public partial struct PlayerChaserSystem : ISystem
@@ -16,15 +17,14 @@ public partial struct PlayerChaserSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        // foreach (var (tag, transform) in SystemAPI.Query<RefRO<PlayerTag>, RefRO<LocalTransform>>())
-        // {
+        //TODO
+        // var entity = SystemAPI.GetSingletonEntity<PlayerTag>();
+        // var transform = SystemAPI.GetComponentRO<LocalTransform>(entity);
         new PlayerChaserJob
         {
-            // TargetPosition = transform.Position,
+            // TargetPosition = transform.ValueRO.Position,
 
         }.ScheduleParallel();
-        // }
-        //TODO PlayerのSingletonのTransformを取得
     }
 }
 
