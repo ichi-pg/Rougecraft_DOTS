@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 
-public struct Spawner : IComponentData
+public struct SpawnerData : IComponentData
 {
     public Entity SpawnPrefab;
     public float3 SpawnPosition;
@@ -21,7 +21,7 @@ public class SpawnerAuthoring : MonoBehaviour
         public override void Bake(SpawnerAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.None);
-            AddComponent(entity, new Spawner
+            AddComponent(entity, new SpawnerData
             {
                 SpawnPrefab = GetEntity(authoring.spawnPrefab, TransformUsageFlags.Dynamic),
                 SpawnPosition = authoring.spawnerTransform.position,

@@ -16,7 +16,7 @@ public partial struct TracerSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        var tracer = SystemAPI.GetSingleton<Tracer>();
+        var tracer = SystemAPI.GetSingleton<TracerData>();
         new TracerJob
         {
             TargetPosition = tracer.TargetPosition,
@@ -30,7 +30,7 @@ public partial struct TracerJob : IJobEntity
 {
     public float3 TargetPosition;
 
-    void Execute(ref Chaser chaser)
+    void Execute(ref ChaserData chaser)
     {
         chaser.TargetPosition = TargetPosition;
     }

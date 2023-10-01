@@ -31,7 +31,7 @@ public partial struct ChaserJob : IJobEntity
 {
     public float DeltaTime;
 
-    void Execute(in Chaser chaser, ref LocalTransform transform)
+    void Execute(in ChaserData chaser, ref LocalTransform transform)
     {
         var direction = math.normalize(chaser.TargetPosition - transform.Position);
         transform.Position += direction * chaser.MoveSpeed * DeltaTime;

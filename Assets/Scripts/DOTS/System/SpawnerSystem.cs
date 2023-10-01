@@ -33,7 +33,7 @@ public partial struct SpawnerJob : IJobEntity
     public EntityCommandBuffer.ParallelWriter Writer;
     public double ElapsedTime;
 
-    void Execute([ChunkIndexInQuery] int chunkIndex, ref Spawner spawner)
+    void Execute([ChunkIndexInQuery] int chunkIndex, ref SpawnerData spawner)
     {
         if (spawner.NextSpawnTime < ElapsedTime)
         {

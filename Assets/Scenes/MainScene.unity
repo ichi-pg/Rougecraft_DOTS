@@ -390,6 +390,8 @@ GameObject:
   - component: {fileID: 435978731}
   - component: {fileID: 435978730}
   - component: {fileID: 435978729}
+  - component: {fileID: 435978734}
+  - component: {fileID: 435978733}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -483,6 +485,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435978733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435978728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a28e4882389284a9ee5f365af6c123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &435978734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435978728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab105eec3009c14eb8a98f43ad2dd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  input: {fileID: 798151601}
 --- !u!1 &798151600
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,10 +521,8 @@ GameObject:
   m_Component:
   - component: {fileID: 798151602}
   - component: {fileID: 798151601}
-  - component: {fileID: 798151604}
-  - component: {fileID: 798151603}
   m_Layer: 0
-  m_Name: PlayerSystem
+  m_Name: InputSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,34 +574,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &798151603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798151600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab105eec3009c14eb8a98f43ad2dd28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 435978732}
-  moveSpeed: 10
-  input: {fileID: 798151601}
---- !u!114 &798151604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798151600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64a28e4882389284a9ee5f365af6c123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTransform: {fileID: 435978732}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,5 +684,5 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 798151602}
-  - {fileID: 435978732}
   - {fileID: 1750373513}
+  - {fileID: 435978732}
